@@ -1,8 +1,16 @@
 package com.peer.dto;
 
+import com.peer.validation.PasswordPolicy;
+
+import jakarta.validation.constraints.NotBlank;
+
 public class ResetPasswordRequest {
 
+    @NotBlank(message = "Token is required")
     private String token;
+
+    @NotBlank(message = "New password is required")
+    @PasswordPolicy
     private String newPassword;
 
     public ResetPasswordRequest() {

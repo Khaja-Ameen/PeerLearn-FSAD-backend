@@ -50,6 +50,12 @@ public class AuthService {
             if (!incomingStudentId.matches("\\d{10}")) {
                 throw new RuntimeException("Student ID must be exactly 10 digits");
             }
+
+            // Check for duplicate Student ID
+            if (userRepository.findByUserId(incomingStudentId).isPresent()) {
+                throw new RuntimeException("This Student ID is already registered. Please use a different ID.");
+            }
+
             finalUserId = incomingStudentId;
 
         } else if (request.getRole() == User.Role.TEACHER) {
@@ -60,6 +66,12 @@ public class AuthService {
             if (!incomingFacultyId.matches("\\d{4}")) {
                 throw new RuntimeException("Faculty ID must be exactly 4 digits");
             }
+
+            // Check for duplicate Faculty ID
+            if (userRepository.findByUserId(incomingFacultyId).isPresent()) {
+                throw new RuntimeException("This Faculty ID is already registered. Please use a different ID.");
+            }
+
             finalUserId = incomingFacultyId;
 
         } else {

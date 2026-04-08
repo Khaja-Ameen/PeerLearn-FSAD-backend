@@ -25,6 +25,7 @@ public class User {
     private Role role;
 
     private String section;
+    @Column(unique = true)
     private String userId;
     private String department;
 

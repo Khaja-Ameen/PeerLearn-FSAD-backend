@@ -1,12 +1,22 @@
 package com.peer.dto;
 
 import com.peer.entity.User;
+import com.peer.validation.PasswordPolicy;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class RegisterRequest {
 
     private String fullName;
+    @Email(message = "Invalid email format")
+    @NotBlank(message = "Email is required")
     private String email;
+    @NotBlank(message = "Password is required")
+    @PasswordPolicy
     private String password;
+    @NotNull(message = "Role is required")
     private User.Role role;
     private String section;
     private String department;

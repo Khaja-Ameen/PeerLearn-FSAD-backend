@@ -5,6 +5,7 @@ import com.peer.dto.LoginRequest;
 import com.peer.dto.RegisterRequest;
 import com.peer.service.AuthService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,13 +45,24 @@ public class AuthController {
         try {
             AuthResponse response = authService.login(request);
             return ResponseEntity.ok(response);
+        } catch (AuthenticationException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
+                Map.of(
+                    "timestamp", Instant.now().toString(),
+                    "status", 401,
+                    "error", "Unauthorized",
+                    "message", "Incorrect email or password. Please try again."
+                )
+            );
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
                     Map.of(
                             "timestamp", Instant.now().toString(),
                             "status", 401,
                             "error", "Unauthorized",
-                            "message", "Invalid email or password"
+                    "message", e.getMessage() == null || e.getMessage().isBlank()
+                        ? "Incorrect email or password. Please try again."
+                        : e.getMessage()
                     )
             );
         }

@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TeacherGradingV2Service {
@@ -53,6 +54,14 @@ public class TeacherGradingV2Service {
             if (!submitted) return false;
         }
         return true;
+    }
+
+    public List<Long> getAlreadyGradedMissingStudentIds(Long assignmentId) {
+        return missingSubmissionGradeRepository.findByAssignmentId(assignmentId)
+                .stream()
+                .map(MissingSubmissionGrade::getStudentId)
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     @Transactional
