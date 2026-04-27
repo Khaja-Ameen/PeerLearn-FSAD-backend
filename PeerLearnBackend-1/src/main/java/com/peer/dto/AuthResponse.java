@@ -1,5 +1,9 @@
 package com.peer.dto;
+<<<<<<< HEAD
 
+=======
+//Auth 
+>>>>>>> 1fbd339ea806d38c574af6d534f9f198525990b9
 import com.peer.entity.User;
 
 public class AuthResponse {
@@ -49,4 +53,8 @@ public class AuthResponse {
     public void setDepartment(String department) { this.department = department; }
     public void setUserId(String userId) { this.userId = userId; }
     public void setMemberSince(String memberSince) { this.memberSince = memberSince; }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1fbd339ea806d38c574af6d534f9f198525990b9

@@ -11,7 +11,10 @@
 	<groupId>com.peer</groupId>
 	<artifactId>PeerLearnBackend-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+<<<<<<< HEAD
 	<packaging>jar</packaging>
+=======
+>>>>>>> 1fbd339ea806d38c574af6d534f9f198525990b9
 	<name>PeerLearnBackend-1</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>

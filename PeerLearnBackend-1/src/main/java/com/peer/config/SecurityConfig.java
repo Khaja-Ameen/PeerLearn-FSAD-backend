@@ -51,10 +51,14 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
+<<<<<<< HEAD
         config.setAllowedOrigins(List.of(
             "http://localhost:5173",
             "https://peerlearn-project.netlify.app"
         ));
+=======
+        config.setAllowedOrigins(List.of("http://localhost:5173"));
+>>>>>>> 1fbd339ea806d38c574af6d534f9f198525990b9
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("Authorization"));

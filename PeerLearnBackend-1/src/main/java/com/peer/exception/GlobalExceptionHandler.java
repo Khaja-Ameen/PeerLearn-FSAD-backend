@@ -1,5 +1,9 @@
 package com.peer.exception;
+<<<<<<< HEAD
 
+=======
+//global exceptional handler
+>>>>>>> 1fbd339ea806d38c574af6d534f9f198525990b9
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -44,4 +48,8 @@ public class GlobalExceptionHandler {
         body.put("message", ex.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1fbd339ea806d38c574af6d534f9f198525990b9
